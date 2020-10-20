@@ -2,94 +2,188 @@
 title: Cypress
 separator: <!--s-->
 verticalSeparator: <!--v-->
-theme: solarized
+theme: black
 revealOptions:
   transition: fade
 ---
 
 <img src="img/cypress-logo.png" style="background:none; border:none; box-shadow:none; filter: invert(100%);">
 
-Testing for Modern Web Apps
+From Basic to Advanced Testing
 
 Note: [cypress.io](https://www.cypress.io/)
 
-Alle demo's werden op basis van de Bruto-Netto repo gemaakt.
+<!--s-->
+
+## Program
+
+- What is Cypress
+- E2E Testing Project Setup
+- Shortcuts
+- Vue Component Testing
+- CI/CD
+- Showcase
 
 <!--s-->
 
-## Agenda
+## What is Cypress
 
-- Algemeen
-
-  - Wat is Cypress
-  - Cypress VS Selenium
-  - Demo
+![](https://media.giphy.com/media/8wbpmeim0LmdW/giphy.gif) <!-- .element style="border: 0; background: None; box-shadow: None" width="100px" -->
 
 <!--v-->
-
-## Agenda
-
-- Technisch
-  - Werking
-  - Installatie
-  - Test mogelijkheden
-  - CI
-
-<!--s-->
-
-## Wat is Cypress?
 
 - Javascript E2E, Unit & Integratie Testing framework
-- Gemaakt voor alles in de browser
-- Voor developers & test engineers
+- Made for everything in the <span id="bright"> browser </span>
+- For Developers & QA Engineers
 
 <!--v-->
 
-### Hun doel
+## All-in-one Test Library
 
-- _**Altijd**_ gratis en open source
-- Toegankelijke UI testing
-- Developer happiness 😍
+Default support for:
 
-Note: [Why Cypress](https://docs.cypress.io/guides/overview/why-cypress.html)
+- Mocha
+- Chai
+- Sinon
+- Sinon-Chai
+
+Note: [Bundled Tools](https://docs.cypress.io/guides/references/bundled-tools.html)
+
+<!--v-->
+
+Default Utility libraries:
+
+- lodash
+- jQuery
+- minimatch.js
+- moment.js
+- blob utils
+
+Note: [Utilities](https://docs.cypress.io/guides/references/bundled-tools.html#Other-Library-Utilities)
+
+<!--v-->
+
+## How?
+
+<!--v-->
+
+![cypress-architecture](img/cypress-architecture.png)
+
+<!--v-->
+
+- Runs fully in the browser
+- Full control of:
+  - Network trafic
+  - Local storage/cookies
+  - Applicatie state
+  - ...
+- All tests written in JS/TS
+
+Note: [Cypress architecture](https://docs.cypress.io/guides/overview/key-differences.html#Architecture)
+[How it works](https://www.cypress.io/how-it-works/)
+
+<!--v-->
+
+## Browser support
 
 <!--s-->
 
-## Cypress VS Selenium
+## Project Setup strategies
+
+![](https://media.giphy.com/media/8wbpmeim0LmdW/giphy.gif) <!-- .element style="border: 0; background: None; box-shadow: None" width="100px" -->
 
 <!--v-->
 
-## Voordelen
+## Basic
 
-- Sneller
-- Component/Unit testing
-- Eenvoudig debuggen prioriteit
-- Interactief (Time travel)
-- _**Volledige**_ browser controle
-- Automatisch wachten
-- Automatisch screenshots & videos
-- Geen externe browser dependencies
+Simple tests
 
 <!--v-->
 
-## Nadelen
+## Centralize selectors
 
-- _**Nog**_ geen cross-browser support
-- Geen multi browser tab support
-- Minder geschikt over meerdere applicaties heen te werken
+Simple tests
 
-Note: support voor IE, FF, Edge in de maak
+<!--v-->
+
+## Centralize behavior
+
+<!--v-->
+
+## What to choose?
+
+- depends on:
+  - Scale
+  - Component architecture
+  - Flow
 
 <!--s-->
+
+## Shortcuts
+
+![](https://media.giphy.com/media/8wbpmeim0LmdW/giphy.gif) <!-- .element style="border: 0; background: None; box-shadow: None" width="100px" -->
+
+<!--v-->
+
+## Skip login flows
+
+<!--v-->
+
+## Preset application state
+
+<!--v-->
+
+## Test Aware Development
+
+- Think how you are gonne automate this
+- provide shortcuts to cut external software e.g. payments
+- All to make sure your critical path is fully automated
+
+<!--s-->
+
+## Vue Component Testing
+
+![](https://media.giphy.com/media/8wbpmeim0LmdW/giphy.gif) <!-- .element style="border: 0; background: None; box-shadow: None" width="100px" -->
+
+<!--v-->
+
+Take test your compontens in a real browser
+
+<!--v-->
 
 ## Demo
 
-```bash
-git checkout cypress-talk/general-demo
-npm run demo
-```
+<!--s-->
 
-Note: [Features](https://www.cypress.io/features/)
+## CI/CD
+
+![](https://media.giphy.com/media/8wbpmeim0LmdW/giphy.gif) <!-- .element style="border: 0; background: None; box-shadow: None" width="100px" -->
+
+<!--v-->
+
+## PR Flow
+
+<!--v-->
+
+## E2E Regression flow
+
+<!--v-->
+
+## Scaling up
+
+- parallelize your tests with different commands in parallel jobs
+
+## Multi browser target
+
+- docker
+
+// TODO: Add Note
+
+<!--s-->
+
+## Showcase
+
+![](https://media.giphy.com/media/8wbpmeim0LmdW/giphy.gif) <!-- .element style="border: 0; background: None; box-shadow: None" width="100px" -->
 
 <!--s-->
 
@@ -125,19 +219,6 @@ Note: [source](https://applitools.com/blog/cypress-vs-selenium-webdriver-better-
 ### Cypress
 
 ![cypress-architecture](img/cypress-architecture.png)
-
-<!--v-->
-
-- Leeft in de browser
-- Volledige controle over:
-  - Netwerk verkeer
-  - Local storage/cookies
-  - Applicatie state
-  - ...
-- Geen compiler tussenstap
-
-Note: [Cypress architecture](https://docs.cypress.io/guides/overview/key-differences.html#Architecture)
-[How it works](https://www.cypress.io/how-it-works/)
 
 <!--s-->
 
@@ -619,3 +700,29 @@ npm install npm-run-all --save-dev
 3. Publish Screenshots/recordings
 
 <a target="_blank" href="https://xeriusit.visualstudio.com/SVZ-OL/_build/results?buildId=69313">Bruto-Netto build</a>
+
+<style>
+#bright {
+  color: rgb(120, 217, 46);
+}
+
+#left {
+	margin: 10px 0 15px 20px;
+	text-align: center;
+	float: left;
+	z-index:-10;
+	width:48%;
+	font-size: 0.85em;
+	line-height: 1.5;
+}
+
+#right {
+	margin: 10px 0 15px 0;
+	float: right;
+	text-align: center;
+	z-index:-10;
+	width:48%;
+	font-size: 0.85em;
+	line-height: 1.5;
+}
+</style>

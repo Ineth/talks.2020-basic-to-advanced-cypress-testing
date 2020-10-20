@@ -1,0 +1,8 @@
+{
+  "controls": true,
+  "controlsTutorial": true,
+  "controlsBackArrows": "faded",
+  "progress": true,
+  "transition": "slide",
+  "overview": true
+}

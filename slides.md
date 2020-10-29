@@ -7,7 +7,7 @@ revealOptions:
   transition: fade
 ---
 
-<img src="img/cypress-logo.png" style="background:none; border:none; box-shadow:none; filter: invert(100%);">
+<img src="img/cypress-logo.png" style="background:none; border:none; box-shadow:none;">
 
 From Basic to Advanced Testing
 
@@ -17,9 +17,9 @@ Note: [cypress.io](https://www.cypress.io/)
 
 ## Program
 
-- What is Cypress
-- E2E Testing Project Setup
-- Shortcuts
+- What is Cypress?
+- Project Setup strategies
+- Taking shortcuts
 - Vue Component Testing
 - CI/CD
 - Showcase
@@ -33,14 +33,16 @@ Note: [cypress.io](https://www.cypress.io/)
 <!--v-->
 
 - Javascript E2E, Unit & Integratie Testing framework
-- Made for everything in the <span id="bright"> browser </span>
+- Made for everything in the <span class="bright"> browser </span>
 - For Developers & QA Engineers
 
 <!--v-->
 
 ## All-in-one Test Library
 
-Default support for:
+<!--v-->
+
+Bundled Tools:
 
 - Mocha
 - Chai
@@ -48,6 +50,7 @@ Default support for:
 - Sinon-Chai
 
 Note: [Bundled Tools](https://docs.cypress.io/guides/references/bundled-tools.html)
+TODO: Convert to logo's
 
 <!--v-->
 
@@ -58,8 +61,10 @@ Default Utility libraries:
 - minimatch.js
 - moment.js
 - blob utils
+- Promise (Bluebird)
 
 Note: [Utilities](https://docs.cypress.io/guides/references/bundled-tools.html#Other-Library-Utilities)
+TODO: Convert to logo's
 
 <!--v-->
 
@@ -71,13 +76,21 @@ Note: [Utilities](https://docs.cypress.io/guides/references/bundled-tools.html#O
 
 <!--v-->
 
-- Runs fully in the browser
-- Full control of:
-  - Network trafic
-  - Local storage/cookies
-  - Applicatie state
-  - ...
-- All tests written in JS/TS
+<ul>
+  <li class="fragment fade-in-then-semi-out"><p>Runs fully in the browser</p></li>
+  <li class="fragment fade-in-then-semi-out">
+    <p>Full control of</p>
+    <ul>
+      <li><p>Network trafic</p></li>
+      <li><p>Local storage/cookies</p></li>
+      <li><p>Applicatie started</p></li>
+      <li><p>...</p></li>
+    </ul>
+  </li>
+  <li class="fragment fade-in-then-semi-out">
+    <p>All tests written in JS/TS</p>
+  </li>
+</ul>
 
 Note: [Cypress architecture](https://docs.cypress.io/guides/overview/key-differences.html#Architecture)
 [How it works](https://www.cypress.io/how-it-works/)
@@ -85,6 +98,18 @@ Note: [Cypress architecture](https://docs.cypress.io/guides/overview/key-differe
 <!--v-->
 
 ## Browser support
+
+<!--v-->
+
+<div class="image-box">
+  <img src="img\supported-browser-logos\chrome.png" >
+  <img src="img\supported-browser-logos\firefox.png">
+  <img src="img\supported-browser-logos\edge.png">
+</div>
+
+Custom browser can be added like e.g. Brave <!-- .element class="bottom-note fragment" -->
+
+Note: [Cypress Browser Support](https://docs.cypress.io/guides/guides/launching-browsers.html#Browsers)
 
 <!--s-->
 
@@ -236,7 +261,7 @@ Note: [Installatie](https://docs.cypress.io/guides/getting-started/installing-cy
 
 ### Commands
 
-```json
+```json [5-6]
 // package.json
 
 "scripts": {
@@ -702,7 +727,23 @@ npm install npm-run-all --save-dev
 <a target="_blank" href="https://xeriusit.visualstudio.com/SVZ-OL/_build/results?buildId=69313">Bruto-Netto build</a>
 
 <style>
-#bright {
+
+.image-box {
+  display: flex; 
+  justify-content: space-between;
+}
+
+.image-box img {
+  height: 250px;
+  margin: 10px;
+}
+
+.bottom-note {
+  margin-top: 4em !important;
+  font-size: 0.8em;
+}
+
+.bright {
   color: rgb(120, 217, 46);
 }
 

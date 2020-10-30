@@ -4,24 +4,22 @@
   "description": "sample cypress standalone setup",
   "main": "index.js",
   "scripts": {
-    "open": "cypress open"
+    "lint-fix": "tslint -p tsconfig.json --fix",
+    "open": "cypress open",
+    "test": "cypress run -b chrome --headless",
+    "pre-test-ci": "npm run clean-ci && cypress verify",
+    "clean-ci": "rimraf reports/*"
   },
   "author": "Thomas De Pauw",
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
     "@types/node": "^12.12.26",
-    "@babel/core": "^7.11.5",
-    "@babel/preset-env": "^7.11.5",
-    "@cypress/webpack-preprocessor": "^5.4.9",
-    "babel-loader": "^8.1.0",
     "cypress": "^5.5.0",
-    "ts-loader": "^6.2.1",
     "prettier": "^1.19.1",
     "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.1.0",
-    "typescript": "^3.7.5",
-    "webpack": "^4.44.1"
+    "typescript": "^3.7.5"
   }
 }

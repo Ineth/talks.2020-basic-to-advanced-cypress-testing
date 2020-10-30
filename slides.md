@@ -15,7 +15,7 @@ Note: [cypress.io](https://www.cypress.io/)
 
 <!--s-->
 
-## Program
+# Program
 
 - What is Cypress?
 - Project Setup strategies
@@ -26,7 +26,7 @@ Note: [cypress.io](https://www.cypress.io/)
 
 <!--s-->
 
-## What is Cypress
+# What is Cypress
 
 ![](https://media.giphy.com/media/8wbpmeim0LmdW/giphy.gif) <!-- .element style="border: 0; background: None; box-shadow: None" width="100px" -->
 
@@ -113,9 +113,16 @@ Note: [Cypress Browser Support](https://docs.cypress.io/guides/guides/launching-
 
 <!--s-->
 
-## Project Setup strategies
+# Project Setup strategies
 
 ![](https://media.giphy.com/media/8wbpmeim0LmdW/giphy.gif) <!-- .element style="border: 0; background: None; box-shadow: None" width="100px" -->
+
+<!--v-->
+
+## First things first
+
+- Language choise <!-- .element class="fragment" -->
+- Stand alone or integrated <!-- .element class="fragment" -->
 
 <!--v-->
 
@@ -144,7 +151,7 @@ Simple tests
 
 <!--s-->
 
-## Shortcuts
+# Shortcuts
 
 ![](https://media.giphy.com/media/8wbpmeim0LmdW/giphy.gif) <!-- .element style="border: 0; background: None; box-shadow: None" width="100px" -->
 
@@ -180,7 +187,7 @@ Take test your compontens in a real browser
 
 <!--s-->
 
-## CI/CD
+# CI/CD
 
 ![](https://media.giphy.com/media/8wbpmeim0LmdW/giphy.gif) <!-- .element style="border: 0; background: None; box-shadow: None" width="100px" -->
 
@@ -206,7 +213,7 @@ Take test your compontens in a real browser
 
 <!--s-->
 
-## Showcase
+# Showcase
 
 ![](https://media.giphy.com/media/8wbpmeim0LmdW/giphy.gif) <!-- .element style="border: 0; background: None; box-shadow: None" width="100px" -->
 
@@ -765,5 +772,9 @@ npm install npm-run-all --save-dev
 	width:48%;
 	font-size: 0.85em;
 	line-height: 1.5;
+}
+
+.reveal h1 {
+  font-size: 2em !important;
 }
 </style>

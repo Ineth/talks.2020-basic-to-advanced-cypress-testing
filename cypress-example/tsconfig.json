@@ -1,0 +1,32 @@
+{
+  "include": ["node_modules/cypress", "cypress/**/*.ts"],
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./cypress",
+    "paths": {
+      "@support/*": ["support/*"],
+      "@fixtures/*": ["fixtures/*"],
+      "@tests/*": ["tests/*"]
+    },
+    "declaration": false,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noImplicitReturns": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "target": "es5",
+    "typeRoots": ["node_modules/@types"],
+    "types": ["cypress"],
+    "lib": ["es2018", "dom"],
+    "resolveJsonModule": true
+  }
+}

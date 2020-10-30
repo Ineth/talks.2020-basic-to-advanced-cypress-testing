@@ -1,0 +1,17 @@
+{
+  "baseUrl": "https://www.xerius.be/viaXerius/",
+  "supportFile": "./cypress/support/index.ts",
+  "screenshotsFolder": "./reports/screenshots",
+  "videosFolder": "./reports/videos",
+  "reporter": "junit",
+  "reporterOptions": {
+    "mochaFile": "reports/cypress-example-junit.[hash].xml"
+  },
+  "integrationFolder": "./cypress/tests",
+  "testFiles": "**/*.spec.ts",
+  "viewportHeight": 667,
+  "viewportWidth": 375,
+  "videoUploadOnPasses": false,
+  "trashAssetsBeforeRuns": false,
+  "chromeWebSecurity": false
+}

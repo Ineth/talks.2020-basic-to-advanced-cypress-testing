@@ -124,11 +124,23 @@ Note: [Cypress Browser Support](https://docs.cypress.io/guides/guides/launching-
 - Language choise <!-- .element class="fragment" -->
 - Stand alone or integrated <!-- .element class="fragment" -->
 
+Note:
+[TS support](https://docs.cypress.io/guides/tooling/typescript-support.html#Install-TypeScript)
+[Install Cypress](https://docs.cypress.io/guides/getting-started/installing-cypress.html)
+
+<!--v-->
+
+## Demo
+
 <!--v-->
 
 ## Basic
 
-Simple tests
+```TS
+// Code example here
+```
+
+- Use custom automation attribute
 
 <!--v-->
 

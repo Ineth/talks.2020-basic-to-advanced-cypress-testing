@@ -327,6 +327,41 @@ Note:
 
 <!--v-->
 
+### Support components
+
+![](img\test-strategies\support-behavior.png)
+
+<!--v-->
+
+### Updated test file
+
+```TS [|4|5|9,10|12,13|15,16]
+ it('It should go through the intro flow - Result', () => {
+    cy.visit('nl/Opstart Eenmanszaak');
+
+    cookieControl.accept();
+    navigatie.startAanbod();
+
+    navigatie.verder();
+
+    stringInput.fill('John');
+    stringInput.next();
+
+    stringInput.fill('Doe');
+    stringInput.next();
+
+    stringInput.fill('', true);
+    stringInput.next();
+  });
+```
+
+Note:
+
+- Change in fill behavior can be handled in one place, keeping backward compatibility in mind
+- Navigation & Next logic is centralized
+
+<!--v-->
+
 ## What to choose?
 
 - depends on:
@@ -347,6 +382,10 @@ Note:
 <!--v-->
 
 ## Preset application state
+
+<!--v-->
+
+## Api Mocking
 
 <!--v-->
 

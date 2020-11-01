@@ -156,9 +156,9 @@ Note:
 
 <!--v-->
 
-## Maintenance issues
+### Maintenance issues
 
-- Use of Id's and css selectors <!-- .element class="fragment fade-in-then-semi-out" -->
+- Use of Ids and CSS selectors <!-- .element class="fragment fade-in-then-semi-out" -->
 - Repeating functional behavior <!-- .element class="fragment fade-in-then-semi-out" -->
 
 Note:
@@ -168,22 +168,171 @@ Note:
 
 <!--v-->
 
-## Centralize selectors
+## Automation Ids
 
-Simple tests
+<!-- prettier-ignore -->
+```html [|3,8]
+<input 
+  id="Voornaam" 
+  data-cy="my-input" 
+  type="text" />
+
+<button
+  id="next-button"
+  data-cy="next">
+    Next Step
+</button>
+```
+
+- Custom attribute for automation <!-- .element class="fragment fade-in-then-semi-out" -->
+- Only changes if functionality changes <!-- .element class="fragment fade-in-then-semi-out" -->
+
+Note:
+[Best practices - Selecting Elements](https://docs.cypress.io/guides/references/best-practices.html#Selecting-Elements)
+
+<!--v-->
+
+### Cypress Command
+
+```TS []
+// support/commands.ts
+...
+const dataAutomationIdAttr = 'data-automation-id';
+
+function getBy(
+  automationId: string,
+  options?: Partial<Cypress.Loggable & Cypress.Timeoutable & Cypress.Withinable> | undefined
+) {
+  return cy.get(`[${dataAutomationIdAttr}="${automationId}"]`, options);
+}
+...
+```
+
+<!--v-->
+
+### Updated test file
+
+```TS [|4|5,8,12|11]
+it('It should go through the intro flow - Result', () => {
+    cy.visit('nl/Opstart Eenmanszaak');
+
+    cy.get('#ccc-notify-accept').click();
+    cy.getBy('navigatie-verder').click();
+
+    cy.getBy('xer-sync-point');
+    cy.getBy('navigatie-verder').click();
+
+    cy.getBy('xer-sync-point');
+    cy.getBy('textfield_input').type('John');
+    cy.getBy('navigatie-verder')
+      .first()
+      .click();
+  });
+```
+
+<!--v-->
+
+## Centralize Selectors
+
+- Functional Readability <!-- .element class="fragment fade-in-then-semi-out" -->
+- Improve Maintenance <!-- .element class="fragment fade-in-then-semi-out" -->
+
+Note:
+
+- Centralize based on components
+- find repeatable elements
+
+<!--v-->
+
+### Cookie Control
+
+![](img\test-strategies\cookie-control.png)
+
+<!--v-->
+
+### Start aanbod
+
+![](img\test-strategies\start-next-button.png)
+
+<!--v-->
+
+### Verder zonder itsme
+
+![](img\test-strategies\verder-zonder-itsme.png)
+
+<!--v-->
+
+### input
+
+![](img\test-strategies\component-build-up-simple.png)
+
+<!--v-->
+
+### component selectors
+
+```TS [|4-6|7|8|9-12|13|14]
+// support/component.selectors.ts
+
+export const componentSelectors = {
+  cookieControl: {
+    acceptButton: () => cy.get('#ccc-notify-accept')
+  },
+  startAanbodButton: () => cy.getBy('navigatie-verder'),
+  verderZonderItsm: () => cy.getBy('navigatie-verder'),
+  xerInput: {
+    input: () => cy.getBy('textfield_input'),
+    errorMessage: () => cy.getBy('textfield_error'),
+  },
+  verder: () => cy.getBy('navigatie-verder').first(),
+  syncPoint: () => cy.getBy('xer-sync-point')
+};
+```
+
+<!--v-->
+
+### Updated test file
+
+```TS [|4|5,8,12|11]
+it('It should go through the intro flow - Result', () => {
+  cy.visit('nl/Opstart Eenmanszaak');
+
+  componentSelectors.cookieControl.acceptButton().click();
+  componentSelectors.verder().click();
+
+  componentSelectors.syncPoint();
+  componentSelectors.verder().click();
+
+  componentSelectors.syncPoint();
+  componentSelectors.xerInput.input().type('John');
+  componentSelectors.verder().click();
+});
+```
 
 <!--v-->
 
 ## Centralize behavior
+
+- Focus on functional component behavior <!-- .element class="fragment fade-in-then-semi-out" -->
+- Improves maintainability <!-- .element class="fragment fade-in-then-semi-out" -->
+
+Note:
+
+- Maintenance will highly improve depending of the reusability of you support components
+
+<!--v-->
+
+### Context
+
+![](img\test-strategies\stap-beharior-breakdown.png)
 
 <!--v-->
 
 ## What to choose?
 
 - depends on:
-  - Scale
-  - Component architecture
-  - Flow
+  - Scale <!-- .element class="fragment fade-in-then-semi-out" -->
+  - Component Architecture <!-- .element class="fragment fade-in-then-semi-out" -->
+  - Application Flow <!-- .element class="fragment fade-in-then-semi-out" -->
 
 <!--s-->
 

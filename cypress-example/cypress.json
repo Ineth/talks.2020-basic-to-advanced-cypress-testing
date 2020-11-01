@@ -1,5 +1,5 @@
 {
-  "baseUrl": "https://test-zenomo.xerius.be/ViaXerius/",
+  "baseUrl": "https://test-zenomo.xerius.be/ViaXerius",
   "supportFile": "./cypress/support/index.ts",
   "screenshotsFolder": "./reports/screenshots",
   "videosFolder": "./reports/videos",

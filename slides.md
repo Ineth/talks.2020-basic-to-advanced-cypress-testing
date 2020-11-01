@@ -121,8 +121,8 @@ Note: [Cypress Browser Support](https://docs.cypress.io/guides/guides/launching-
 
 ## First things first
 
-- Language choise <!-- .element class="fragment" -->
-- Stand alone or integrated <!-- .element class="fragment" -->
+- Language choise <!-- .element class="fragment fade-in-then-semi-out" -->
+- Stand alone or integrated <!-- .element class="fragment fade-in-then-semi-out" -->
 
 Note:
 [TS support](https://docs.cypress.io/guides/tooling/typescript-support.html#Install-TypeScript)
@@ -136,11 +136,35 @@ Note:
 
 ## Basic
 
-```TS
-// Code example here
+```TS [2|4-5|7|8|10-14]
+ it('It should go through the intro flow', () => {
+    cy.visit('nl/Opstart Eenmanszaak');
+
+    cy.get('#ccc-notify-accept').click();
+    cy.get('.xer-mb-3').click();
+
+    cy.getBy('xer-sync-point');
+    cy.get('div.xer-flex > .xer-btn').click();
+
+    cy.getBy('xer-sync-point');
+    cy.get('#persoon\\.voornaam').type('John');
+    cy.get('.xer-btn')
+      .first()
+      .click();
+  });
 ```
 
-- Use custom automation attribute
+<!--v-->
+
+## Maintenance issues
+
+- Use of Id's and css selectors <!-- .element class="fragment fade-in-then-semi-out" -->
+- Repeating functional behavior <!-- .element class="fragment fade-in-then-semi-out" -->
+
+Note:
+
+- CSS and id selectors can change without a functional change
+- The same functional block have different selector approaches (e.g. Next buttons)
 
 <!--v-->
 

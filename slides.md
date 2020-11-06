@@ -651,15 +651,32 @@ Note:
 
 <!--s-->
 
-# Test Aware Development
+# Developer involvement
 
 ![](https://media.giphy.com/media/8wbpmeim0LmdW/giphy.gif) <!-- .element style="border: 0; background: None; box-shadow: None" width="100px" -->
 
 <!--v-->
 
-- Think how you are gonne automate this
-- provide shortcuts to cut external software e.g. payments
-- All to make sure your critical path is fully automated
+<h2><span class="fragment bright">Test</span> <span class="fragment bright">Aware</span> <span class="fragment bright">Development</span></h2>
+
+<!--v-->
+
+Alwasy ask yourself 🤔
+
+<div class="fragment">
+  <ul class="list-style-none ">
+    <li>How are we going to test this ❓</li>
+    <li class="fragment">How are we going to automate this ❓</li>
+  </ul>
+</div>
+
+<div class="bottom-note fragment">
+  ✔️ Be Lazy, automate instead of manually testing things over and over again
+</div>
+
+<!--v-->
+
+Test & Dev collaboration is key
 
 <!--s-->
 

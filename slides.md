@@ -464,37 +464,44 @@ Note:
 
 <!--v-->
 
-## Skip login flows
+## Short what 😲
+
+- Helps reduce test run time <!-- .element class="fragment fade-in-then-semi-out" -->
+- Allow for easy testing of hard to reach parts <!-- .element class="fragment fade-in-then-semi-out" -->
+- Keeps tests focus <!-- .element class="fragment fade-in-then-semi-out" -->
+
+<div class="bottom-note fragment">
+  ✔️ Use Cypress <span class="bright">power</span> over the browser to cut corners in your application process
+</div>
 
 <!--v-->
 
-## Preset application state
+## Application Login
+
+- Mimic the API flow to login a user, without UI interaction
+- Preset cookies
+
+<div class="bottom-note fragment">
+  ✔️ No every test should have to login through the UI.
+</div>
 
 <!--v-->
 
 ## Api Mocking
 
+- Test api error responses (4xx, 5xx, etc)
+- Create fixtures to decouble api and test specific UI logic
+- Test Feature toggles
+- ...
 <!--v-->
 
-## Test Aware Development
+## State manipulation
 
-- Think how you are gonne automate this
-- provide shortcuts to cut external software e.g. payments
-- All to make sure your critical path is fully automated
+- Call actions etc to prepare app State
+- Load pre-stored application state
 
-<!--s-->
-
-## Vue Component Testing
-
-![](https://media.giphy.com/media/8wbpmeim0LmdW/giphy.gif) <!-- .element style="border: 0; background: None; box-shadow: None" width="100px" -->
-
-<!--v-->
-
-Take test your compontens in a real browser
-
-<!--v-->
-
-## Demo
+Note:
+when using Redux, Veux, NGRX, ...
 
 <!--s-->
 
@@ -521,6 +528,18 @@ Take test your compontens in a real browser
 - docker
 
 // TODO: Add Note
+
+<!--s-->
+
+# Test Aware Development
+
+![](https://media.giphy.com/media/8wbpmeim0LmdW/giphy.gif) <!-- .element style="border: 0; background: None; box-shadow: None" width="100px" -->
+
+<!--v-->
+
+- Think how you are gonne automate this
+- provide shortcuts to cut external software e.g. payments
+- All to make sure your critical path is fully automated
 
 <!--s-->
 

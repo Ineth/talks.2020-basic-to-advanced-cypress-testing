@@ -20,7 +20,6 @@ Note: [cypress.io](https://www.cypress.io/)
 - What is Cypress?
 - Project Setup strategies
 - Taking shortcuts
-- Vue Component Testing
 - CI/CD
 - Showcase
 
@@ -32,9 +31,13 @@ Note: [cypress.io](https://www.cypress.io/)
 
 <!--v-->
 
-- Javascript E2E, Unit & Integratie Testing framework
-- Made for everything in the <span class="bright"> browser </span>
-- For Developers & QA Engineers
+## Core
+
+<ul>
+  <li class="fragment fade-in-then-semi-out">Javascript E2E, Unit & Integratie Testing framework</li>
+  <li class="fragment fade-in-then-semi-out">Made for everything in the <span class="bright"> browser </span></li>
+  <li class="fragment fade-in-then-semi-out">For Developers & QA Engineers</li>
+</ul>
 
 <!--v-->
 
@@ -107,7 +110,13 @@ Note: [Cypress architecture](https://docs.cypress.io/guides/overview/key-differe
   <img src="img\supported-browser-logos\edge.png">
 </div>
 
-Custom browser can be added like e.g. Brave <!-- .element class="bottom-note fragment" -->
+<div class="bottom-note fragment">
+Custom browser can be added like e.g.
+  <div class="image-box image-box--center" style="height: 100px;">
+    <img src="img\supported-browser-logos\brave.png" >
+    <img src="img\supported-browser-logos\vivaldi.png" >
+  </div>
+</div>
 
 Note: [Cypress Browser Support](https://docs.cypress.io/guides/guides/launching-browsers.html#Browsers)
 
@@ -154,11 +163,18 @@ Note:
   });
 ```
 
+Note:
+2: Start test by visiting page
+4-5: Accept cookies and start flow
+7: Wait for sync to be visible (SPA)
+8: Start aanbod
+10-14: Wait for voornaam input to be present and fill in field
+
 <!--v-->
 
 ### Maintenance issues
 
-- Use of Ids and CSS selectors <!-- .element class="fragment fade-in-then-semi-out" -->
+- Use of IDs and CSS selectors <!-- .element class="fragment fade-in-then-semi-out" -->
 - Repeating functional behavior <!-- .element class="fragment fade-in-then-semi-out" -->
 
 Note:
@@ -230,6 +246,22 @@ it('It should go through the intro flow - Result', () => {
   });
 ```
 
+Note:
+4: 3rd party dependency that doenst have automation ids in place
+8,8,12: Next navigation by automation id
+11: Input component automation id
+
+<!--v-->
+
+### Recap
+
+- Removed usages of IDs & CSS (Where possible)
+- Added more functionally named selectors for better readability
+
+<div class="fragment bottom-note">
+🤔 What if a component changes and an automation id needs to be updated?
+</div>
+
 <!--v-->
 
 ## Centralize Selectors
@@ -256,7 +288,7 @@ Note:
 
 <!--v-->
 
-### Verder zonder itsme
+### Even kennis maken
 
 ![](img\test-strategies\verder-zonder-itsme.png)
 
@@ -270,23 +302,27 @@ Note:
 
 ### component selectors
 
-```TS [|4-6|7|8|9-12|13|14]
+```TS [|4-6|7-9|11|12]
 // support/component.selectors.ts
 
 export const componentSelectors = {
   cookieControl: {
     acceptButton: () => cy.get('#ccc-notify-accept')
   },
-  startAanbodButton: () => cy.getBy('navigatie-verder'),
-  verderZonderItsm: () => cy.getBy('navigatie-verder'),
   xerInput: {
     input: () => cy.getBy('textfield_input'),
-    errorMessage: () => cy.getBy('textfield_error'),
+    errorMessage: () => cy.getBy('textfield_error')
   },
   verder: () => cy.getBy('navigatie-verder').first(),
   syncPoint: () => cy.getBy('xer-sync-point')
 };
 ```
+
+Note:
+4-6: Cookie Control
+7-9: Input component
+11: generic next navigation button selector
+12: generic syncPoint
 
 <!--v-->
 
@@ -310,6 +346,21 @@ it('It should go through the intro flow - Result', () => {
 
 <!--v-->
 
+### Recap
+
+- Automation ids grouped by component structure
+- Readability improve & more discoverable <!-- .element class="fragment" -->
+- Overview of all application selectors <!-- .element class="fragment" -->
+
+<div class="fragment bottom-note">
+🤔 What if a components behavior changed?
+</div>
+
+Note:
+
+- Behavior change like custom dropdown menu, filling an input, handling cookies
+<!--v-->
+
 ## Centralize behavior
 
 - Focus on functional component behavior <!-- .element class="fragment fade-in-then-semi-out" -->
@@ -324,6 +375,11 @@ Note:
 ### Context
 
 ![](img\test-strategies\stap-beharior-breakdown.png)
+
+Note:
+Generic Wizard
+Stap component shell
+build up by components with specific behavior
 
 <!--v-->
 
@@ -362,12 +418,43 @@ Note:
 
 <!--v-->
 
+### Recap
+
+- Abstracted behavior so it's centraly managed
+- Allows for 1 time behavior updates
+- Insight on breaking behavior changes
+
+<div class="fragment bottom-note">
+<p class="bright">Whats next? 🤔</p> 
+<p class="fragment">🎉 Data driven E2E testing 🎉</p>
+</div>
+
+<!--v-->
+
 ## What to choose?
 
-- depends on:
-  - Scale <!-- .element class="fragment fade-in-then-semi-out" -->
-  - Component Architecture <!-- .element class="fragment fade-in-then-semi-out" -->
-  - Application Flow <!-- .element class="fragment fade-in-then-semi-out" -->
+<div style="margin-bottom=20px;">
+  <div id="left" class="fragment">
+    <p class="bright">Options</p>
+    <ul>
+      <li class="fragment">Basic (with automation ids)</li>
+      <li class="fragment">Centralized automation ids</li>
+      <li class="fragment">Centralized behavior</li>
+    </ul>
+  </div>
+  <div id="right" class="fragment">
+    <p class="bright">Based on</p>
+    <ul>
+      <li class="fragment">Scale</li>
+      <li class="fragment">Component Architecture</li>
+      <li class="fragment">Application Flow</li>
+    </ul>
+  </div>
+</div>
+
+<div class="fragment" style="margin-top:320px; font-size: 0.8em">
+  ✔️ <span class="bright">Centralized Automation Ids</span> is always a good starting point
+</div>
 
 <!--s-->
 
@@ -964,9 +1051,19 @@ npm install npm-run-all --save-dev
   justify-content: space-between;
 }
 
+.image-box--center {
+  justify-content: center;
+}
+
 .image-box img {
   height: 250px;
-  margin: 10px;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.image-box--center img {
+  margin: 15px !important;
 }
 
 .bottom-note {
@@ -996,6 +1093,10 @@ npm install npm-run-all --save-dev
 	width:48%;
 	font-size: 0.85em;
 	line-height: 1.5;
+}
+
+#right ul, #left ul {
+  margin: 0;
 }
 
 .reveal h1 {

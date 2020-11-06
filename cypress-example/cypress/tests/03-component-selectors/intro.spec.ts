@@ -1,6 +1,10 @@
 import { componentSelectors } from '@support/component.selectors';
 
 describe('intro', () => {
+  // beforeEach(() => {
+  //   cy.visit('nl/Opstart Eenmanszaak');
+  // });
+
   it('It should go through the intro flow', () => {
     cy.visit('nl/Opstart Eenmanszaak');
 
@@ -24,6 +28,8 @@ describe('intro', () => {
   });
 
   it('It should go through the intro flow - Result', () => {
+    cy.visit('nl/Opstart Eenmanszaak');
+
     componentSelectors.cookieControl.acceptButton().click();
     componentSelectors.verder().click();
 
@@ -32,7 +38,7 @@ describe('intro', () => {
 
     componentSelectors.syncPoint();
     componentSelectors.xerInput.input().type('John');
-    componentSelectors.verder();
+    componentSelectors.verder().click();
 
     componentSelectors.syncPoint();
     componentSelectors.xerInput.input().type('Doe');

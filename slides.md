@@ -17,11 +17,10 @@ Note: [cypress.io](https://www.cypress.io/)
 
 # Program
 
-- What is Cypress?
-- Project Setup strategies
-- Taking shortcuts
-- CI/CD
-- Showcase
+- What is Cypress? <!-- .element class="fragment fade-in-then-semi-out" -->
+- Project Setup strategies <!-- .element class="fragment fade-in-then-semi-out" -->
+- Shortcuts <!-- .element class="fragment fade-in-then-semi-out" -->
+- CI/CD <!-- .element class="fragment fade-in-then-semi-out" -->
 
 <!--s-->
 
@@ -482,7 +481,7 @@ Note:
 - Preset cookies
 
 <div class="bottom-note fragment">
-  ✔️ No every test should have to login through the UI.
+  ✔️ Not every test should have to login through the UI.
 </div>
 
 <!--v-->
@@ -511,23 +510,144 @@ when using Redux, Veux, NGRX, ...
 
 <!--v-->
 
-## PR Flow
+## Basics
+
+```json [|6|7|5]
+// package.json
+{
+  "scripts": {
+    "open": "cypress open",
+    "test": "cypress run -b chrome --headless",
+    "pre-test-ci": "npm run clean-ci && cypress verify",
+    "clean-ci": "rimraf reports/*",
+    "lint-fix": "tslint -p tsconfig.json --fix"
+  }
+}
+```
 
 <!--v-->
 
-## E2E Regression flow
+## Run options
+
+- Self Contained
+- Deployed environments
 
 <!--v-->
 
-## Scaling up
+## Self Contained
 
-- parallelize your tests with different commands in parallel jobs
+- Run your application directly in the pipeline <!-- .element class="fragment" -->
+- Cypress runs against pipeline hosted instance <!-- .element class="fragment" -->
 
-## Multi browser target
+<div class="bottom-note fragment">
+  <ul class="list-style-none ">
+    <li>✔️ Ideal for PR flows</li>
+    <li class="fragment">✔️ Works on hosted pipelines</li>
+    <li class="fragment">❌ Complex application can require a hybrid setup</li>
+  </ul>
+</div>
 
-- docker
+<!--v-->
 
-// TODO: Add Note
+## 💡 Node Example
+
+```json [|3|8|9|10-13|11,4|12|13]
+{
+  "scripts": {
+    "test-ci": "npm run build && npm run pre-test-ci && run-p --race start-ci test",
+    "start-ci": "http-server ./dist -a localhost -p 4202 -c-1"
+  }
+}
+/*
+  1. npm run build        => create dist output
+  2. npm run pre-test-ci  => verify cypress installation & clean
+  3. run-p                => run the following commands in paralell
+    start-ci      => start application dist on local http-server
+    test          => run cypress tests
+    --race        => Terminate all tasks when one finishes
+*/
+```
+
+Note:
+
+- Also works on Devops hosted agents
+- [http-server](https://github.com/indexzero/http-server)
+- [npm-run-all](https://github.com/mysticatea/npm-run-all)
+
+<!--v-->
+
+## 💡 DotnetCore example
+
+```PS [|3-10|12-14|16|18-19]
+# run-tests-ci.ps1
+
+$ClientHost = Start-Job -Name ClientHost -ScriptBlock {
+  param([string] $hostExePath, [string] $port)
+  Write-Host "Starting dotnet core Job for project: $hostExePath" -ForegroundColor Gray
+  $Env:ASPNETCORE_URLS = "https://localhost:$port"
+  $hostExeItem = Get-ChildItem $hostExePath
+  cd $hostExeItem.DirectoryName
+  & $hostExePath
+} -ArgumentList $hostExePath, $port
+
+$Env:CYPRESS_BASE_URL="https://localhost:$port/"
+cd $testProjectPath
+& npm run $testCommand
+
+$ClientHost | Receive-Job
+
+Write-Host 'Stopping dotnet core job' -ForegroundColor Gray
+Remove-Job -Name ClientHost -Force
+```
+
+Note:
+3-10: Create Powershell job to run as a separate process. This will host the dotnet application
+12-14: Set Cypress config and run the provided test command
+16: Fetch console output of ran job, usefull for debug purposes
+18-19: Stop background job
+
+<!--v-->
+
+## Parallelization
+
+- Use Cypress [Dashboard](https://www.cypress.io/dashboard)
+- Setup multi job pipelines
+
+<!--v-->
+
+## 💡 Parallelization Example
+
+```json [|5-7]
+{
+  "scripts": {
+    ...
+    "test": "cypress run -b chrome --headless",
+    "test:basic": "npm run test -- --spec \"cypress/tests/01-basic/**/*\"",
+    "test:automation-ids": "npm run test -- --spec \"cypress/tests/02-automation-ids/**/*\"",
+    "test:component-selectors": "npm run test -- --spec \"cypress/tests/03-component-selectors/**/*\"",
+    ...
+  }
+}
+```
+
+<!--v-->
+
+## Folder split benefits
+
+- Limit duration of one test suite
+- Allow for partial runs
+- Scope failure to more precies set
+- Create functional overview
+
+<!--v-->
+
+## Scale up in Devops
+
+![](img\ci-cd\regression-set-pipeline.png) <!-- .element style="border: 0; background: None; box-shadow: None" -->
+
+<div class="fragment">
+  ✔️ Runs 177 Tests in 28 min
+</div>
 
 <!--s-->
 
@@ -543,9 +663,22 @@ when using Redux, Veux, NGRX, ...
 
 <!--s-->
 
-# Showcase
+# Resources
 
 ![](https://media.giphy.com/media/8wbpmeim0LmdW/giphy.gif) <!-- .element style="border: 0; background: None; box-shadow: None" width="100px" -->
+
+<!--v-->
+
+- [Cypress Docs](https://docs.cypress.io/)
+- [Cypress Dashboard](https://www.cypress.io/dashboard)
+- [Vue Component Testing](https://github.com/bahmutov/cypress-vue-unit-test)
+- [Target multi browsers](https://docs.cypress.io/guides/guides/launching-browsers.html)
+
+<!--s-->
+
+# Thank you
+
+![](https://media.giphy.com/media/xT5LMB2WiOdjpB7K4o/giphy.gif) <!-- .element style="border: 0; background: None; box-shadow: None" -->
 
 <!--s-->
 
@@ -1120,5 +1253,9 @@ npm install npm-run-all --save-dev
 
 .reveal h1 {
   font-size: 2em !important;
+}
+
+.list-style-none {
+  list-style: none !important;
 }
 </style>

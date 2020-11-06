@@ -4,11 +4,11 @@
   "description": "sample cypress standalone setup",
   "main": "index.js",
   "scripts": {
-    "lint-fix": "tslint -p tsconfig.json --fix",
     "open": "cypress open",
     "test": "cypress run -b chrome --headless",
     "pre-test-ci": "npm run clean-ci && cypress verify",
-    "clean-ci": "rimraf reports/*"
+    "clean-ci": "rimraf reports/*",
+    "lint-fix": "tslint -p tsconfig.json --fix"
   },
   "author": "Thomas De Pauw",
   "license": "ISC",

@@ -1,0 +1,28 @@
+{
+  "name": "talks.cypress-testing",
+  "version": "1.0.0",
+  "description": "Cypress testing talk",
+  "main": "none",
+  "scripts": {
+    "open": "reveal-md slides.md -w",
+    "build": "reveal-md slides.md --static --static-dirs=dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ineth/talks.cypress-testing.git"
+  },
+  "keywords": [
+    "Cypress",
+    "Testing",
+    "Talks"
+  ],
+  "author": "Thomas De Pauw",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ineth/talks.cypress-testing/issues"
+  },
+  "homepage": "https://github.com/Ineth/talks.cypress-testing#readme",
+  "dependencies": {
+    "reveal-md": "^4.1.7"
+  }
+}

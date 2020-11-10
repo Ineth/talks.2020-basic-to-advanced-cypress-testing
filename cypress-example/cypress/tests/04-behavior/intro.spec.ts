@@ -20,7 +20,7 @@ describe('intro', () => {
     componentSelectors.verder().click();
   });
 
-  it('It should go through the intro flow - Result', () => {
+  it.only('It should go through the intro flow - Result', () => {
     cy.visit('nl/Opstart Eenmanszaak');
 
     cookieControl.accept();

@@ -34,6 +34,7 @@ Note: [cypress.io](https://www.cypress.io/)
 - Project Setup strategies <!-- .element class="fragment fade-in-then-semi-out" -->
 - Shortcuts <!-- .element class="fragment fade-in-then-semi-out" -->
 - CI/CD <!-- .element class="fragment fade-in-then-semi-out" -->
+- Developer Involvement <!-- .element class="fragment fade-in-then-semi-out" -->
 
 <!--s-->
 
@@ -46,9 +47,10 @@ Note: [cypress.io](https://www.cypress.io/)
 ## Core
 
 <ul>
-  <li class="fragment fade-in-then-semi-out">Javascript E2E, Unit & Integratie Testing framework</li>
+  <li class="fragment fade-in-then-semi-out"><span class="bright">Javascript</span> E2E, Unit & Integratie Testing framework</li>
   <li class="fragment fade-in-then-semi-out">Made for everything in the <span class="bright"> browser </span></li>
   <li class="fragment fade-in-then-semi-out">For Developers & QA Engineers</li>
+  <li class="fragment fade-in-then-semi-out">Open source & Free</li>
 </ul>
 
 <!--v-->
@@ -83,7 +85,7 @@ TODO: Convert to logo's
 
 <!--v-->
 
-## How?
+## How does it run?
 
 <!--v-->
 
@@ -98,7 +100,7 @@ TODO: Convert to logo's
     <ul>
       <li><p>Network trafic</p></li>
       <li><p>Local storage/cookies</p></li>
-      <li><p>Applicatie started</p></li>
+      <li><p>Application state</p></li>
       <li><p>...</p></li>
     </ul>
   </li>
@@ -153,6 +155,13 @@ Note:
 
 ## Demo
 
+Note:
+Highlight
+
+- Selector playground
+- Step by Step inspection
+- Pauze feature
+
 <!--v-->
 
 ## Basic
@@ -161,7 +170,7 @@ Note:
  it('It should go through the intro flow', () => {
     cy.visit('nl/Opstart Eenmanszaak');
 
-    cy.get('#ccc-notify-accept').click();
+    cy.get('#CybotCookiebotDialogBodyLevelButtonAccept').click();
     cy.get('.xer-mb-3').click();
 
     cy.getBy('xer-sync-point');
@@ -176,6 +185,8 @@ Note:
 ```
 
 Note:
+Test made using selector playground
+
 2: Start test by visiting page
 4-5: Accept cookies and start flow
 7: Wait for sync to be visible (SPA)
@@ -184,10 +195,20 @@ Note:
 
 <!--v-->
 
-### Maintenance issues
+### Recap
 
-- Use of IDs and CSS selectors <!-- .element class="fragment fade-in-then-semi-out" -->
-- Repeating functional behavior <!-- .element class="fragment fade-in-then-semi-out" -->
+<ul class="list-style-none ">
+  <li class="fragment fade-in-then-semi-out">✔️ Fast way to create tests</li>
+  <li class="fragment fade-in-then-semi-out">✔️ Ideal for prototyping</li>
+</ul>
+
+<div class="fragment" style="margin-top: 2em;">
+  <h4>Maintenance Issues 🛠️</h4>
+  <ul class="list-style-none ">
+    <li class="fragment fade-in-then-semi-out">❌ Use of IDs and CSS selectors</li>
+    <li class="fragment fade-in-then-semi-out">❌ Repeating functional behavior</li>
+  </ul>
+</div>
 
 Note:
 
@@ -213,7 +234,7 @@ Note:
 ```
 
 - Custom attribute for automation <!-- .element class="fragment fade-in-then-semi-out" -->
-- Only changes if functionality changes <!-- .element class="fragment fade-in-then-semi-out" -->
+- Only changes with functional changes <!-- .element class="fragment fade-in-then-semi-out" -->
 
 Note:
 [Best practices - Selecting Elements](https://docs.cypress.io/guides/references/best-practices.html#Selecting-Elements)
@@ -244,7 +265,7 @@ function getBy(
 it('It should go through the intro flow - Result', () => {
     cy.visit('nl/Opstart Eenmanszaak');
 
-    cy.get('#ccc-notify-accept').click();
+    cy.get('#CybotCookiebotDialogBodyLevelButtonAccept').click();
     cy.getBy('navigatie-verder').click();
 
     cy.getBy('xer-sync-point');
@@ -267,11 +288,17 @@ Note:
 
 ### Recap
 
-- Removed usages of IDs & CSS (Where possible)
-- Added more functionally named selectors for better readability
+- Removed usages of IDs & CSS (Where possible) <!-- .element class="fragment" -->
+- Added functionally named selectors for better readability <!-- .element class="fragment" -->
 
-<div class="fragment bottom-note">
-🤔 What if a component changes and an automation id needs to be updated?
+<!--v-->
+
+<div>
+  <p>🤔 What if</p>
+  <ul>
+    <li class="fragment">An automation ID needs to be updated?</li>
+    <li class="fragment">I want to know what selectors exist?</li>
+  </ul>
 </div>
 
 <!--v-->
@@ -285,6 +312,10 @@ Note:
 
 - Centralize based on components
 - find repeatable elements
+
+<!--v-->
+
+💡 First some context
 
 <!--v-->
 
@@ -314,12 +345,12 @@ Note:
 
 ### component selectors
 
-```TS [|4-6|7-9|11|12]
+```TS [|4-6|7-10|11|12]
 // support/component.selectors.ts
 
 export const componentSelectors = {
   cookieControl: {
-    acceptButton: () => cy.get('#ccc-notify-accept')
+    acceptButton: () => cy.get('#CybotCookiebotDialogBodyLevelButtonAccept')
   },
   xerInput: {
     input: () => cy.getBy('textfield_input'),
@@ -332,7 +363,7 @@ export const componentSelectors = {
 
 Note:
 4-6: Cookie Control
-7-9: Input component
+7-10: Input component
 11: generic next navigation button selector
 12: generic syncPoint
 
@@ -340,7 +371,7 @@ Note:
 
 ### Updated test file
 
-```TS [|4|5,8,12|11]
+```TS [|4|7,10|5,8,12|11]
 it('It should go through the intro flow - Result', () => {
   cy.visit('nl/Opstart Eenmanszaak');
 
@@ -360,17 +391,18 @@ it('It should go through the intro flow - Result', () => {
 
 ### Recap
 
-- Automation ids grouped by component structure
-- Readability improve & more discoverable <!-- .element class="fragment" -->
+- Automation ids grouped by components <!-- .element class="fragment" -->
+- Improved readability <!-- .element class="fragment" -->
 - Overview of all application selectors <!-- .element class="fragment" -->
 
-<div class="fragment bottom-note">
+<!--v-->
+
 🤔 What if a components behavior changed?
-</div>
 
 Note:
 
 - Behavior change like custom dropdown menu, filling an input, handling cookies
+
 <!--v-->
 
 ## Centralize behavior
@@ -432,13 +464,15 @@ Note:
 
 ### Recap
 
-- Abstracted behavior so it's centraly managed
-- Allows for 1 time behavior updates
-- Insight on breaking behavior changes
+- Abstracted behavior so it's centraly managed <!-- .element class="fragment" -->
+- Allows for 1 time behavior updates <!-- .element class="fragment" -->
+- Insight on breaking behavior changes <!-- .element class="fragment" -->
 
-<div class="fragment bottom-note">
-<p class="bright">Whats next? 🤔</p> 
-<p class="fragment">🎉 Data driven E2E testing 🎉</p>
+<!--v-->
+
+<div >
+  <p class="bright">Whats next? 🤔</p> 
+  <p class="fragment">🎉 Data driven E2E testing 🎉</p>
 </div>
 
 <!--v-->
@@ -450,8 +484,8 @@ Note:
     <p class="bright">Options</p>
     <ul>
       <li class="fragment">Basic (with automation ids)</li>
-      <li class="fragment">Centralized automation ids</li>
-      <li class="fragment">Centralized behavior</li>
+      <li class="fragment">Centralized Selectors</li>
+      <li class="fragment">Centralized Behavior</li>
     </ul>
   </div>
   <div id="right" class="fragment">
@@ -465,7 +499,7 @@ Note:
 </div>
 
 <div class="fragment" style="margin-top:320px; font-size: 0.8em">
-  ✔️ <span class="bright">Centralized Automation Ids</span> is always a good starting point
+  ✔️ <span class="bright">Centralized Selectors</span> is always a good starting point
 </div>
 
 <!--s-->
@@ -479,7 +513,7 @@ Note:
 ## Short what 😲
 
 - Helps reduce test run time <!-- .element class="fragment fade-in-then-semi-out" -->
-- Allow for easy testing of hard to reach parts <!-- .element class="fragment fade-in-then-semi-out" -->
+- Allow for easy testing of hard to reach places <!-- .element class="fragment fade-in-then-semi-out" -->
 - Keeps tests focus <!-- .element class="fragment fade-in-then-semi-out" -->
 
 <div class="bottom-note fragment">
@@ -490,27 +524,32 @@ Note:
 
 ## Application Login
 
-- Mimic the API flow to login a user, without UI interaction
+- Mimic the login API flow
 - Preset cookies
 
 <div class="bottom-note fragment">
-  ✔️ Not every test should have to login through the UI.
+  ✔️ Not every test should have to login through the UI
 </div>
+
+Note:
+
+- login example: OAuth
 
 <!--v-->
 
 ## Api Mocking
 
-- Test api error responses (4xx, 5xx, etc)
-- Create fixtures to decouble api and test specific UI logic
-- Test Feature toggles
-- ...
+- Test API Error Responses (4xx, 5xx, etc) <!-- .element class="fragment fade-in-then-semi-out" -->
+- Create fixtures to decouble the API <!-- .element class="fragment fade-in-then-semi-out" -->
+- Test Feature Toggles <!-- .element class="fragment fade-in-then-semi-out" -->
+- ... <!-- .element class="fragment fade-in-then-semi-out" -->
+
 <!--v-->
 
 ## State manipulation
 
-- Call actions etc to prepare app State
-- Load pre-stored application state
+- Call actions, mutation, etc to prepare app State <!-- .element class="fragment fade-in-then-semi-out" -->
+- Load pre-stored application state <!-- .element class="fragment fade-in-then-semi-out" -->
 
 Note:
 when using Redux, Veux, NGRX, ...
@@ -647,10 +686,10 @@ Note:
 
 ## Folder split benefits
 
-- Limit duration of one test suite
-- Allow for partial runs
-- Scope failure to more precies set
-- Create functional overview
+- Limit duration of one test suite <!-- .element class="fragment fade-in-then-semi-out" -->
+- Allow for partial runs <!-- .element class="fragment fade-in-then-semi-out" -->
+- Scope failure to more precies set <!-- .element class="fragment fade-in-then-semi-out" -->
+- Preserve functional overview <!-- .element class="fragment fade-in-then-semi-out" -->
 
 <!--v-->
 
@@ -684,12 +723,18 @@ Alwasy ask yourself 🤔
 </div>
 
 <div class="bottom-note fragment">
-  ✔️ Be Lazy, automate instead of manually testing things over and over again
+  ✔️ Be Lazy, automate instead of manually testing
 </div>
 
 <!--v-->
 
 Test & Dev collaboration is key
+
+<!--s-->
+
+# Thank you
+
+![](https://media.giphy.com/media/xT5LMB2WiOdjpB7K4o/giphy.gif) <!-- .element style="border: 0; background: None; box-shadow: None" -->
 
 <!--s-->
 
@@ -703,12 +748,6 @@ Test & Dev collaboration is key
 - [Cypress Dashboard](https://www.cypress.io/dashboard)
 - [Vue Component Testing](https://github.com/bahmutov/cypress-vue-unit-test)
 - [Target multi browsers](https://docs.cypress.io/guides/guides/launching-browsers.html)
-
-<!--s-->
-
-# Thank you
-
-![](https://media.giphy.com/media/xT5LMB2WiOdjpB7K4o/giphy.gif) <!-- .element style="border: 0; background: None; box-shadow: None" -->
 
 <!--s-->
 

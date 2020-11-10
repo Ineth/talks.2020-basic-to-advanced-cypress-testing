@@ -8,7 +8,7 @@ describe('intro', () => {
   it('It should go through the intro flow', () => {
     cy.visit('nl/Opstart Eenmanszaak');
 
-    cy.get('#ccc-notify-accept').click();
+    cy.get('#CybotCookiebotDialogBodyLevelButtonAccept').click();
     cy.getBy('navigatie-verder').click();
 
     cy.getBy('xer-sync-point');
@@ -27,7 +27,7 @@ describe('intro', () => {
       .click();
   });
 
-  it('It should go through the intro flow - Result', () => {
+  it.only('It should go through the intro flow - Result', () => {
     cy.visit('nl/Opstart Eenmanszaak');
 
     componentSelectors.cookieControl.acceptButton().click();

@@ -1,6 +1,6 @@
 export const componentSelectors = {
   cookieControl: {
-    acceptButton: () => cy.get('#ccc-notify-accept')
+    acceptButton: () => cy.get('#CybotCookiebotDialogBodyLevelButtonAccept')
   },
   xerInput: {
     input: () => cy.getBy('textfield_input'),

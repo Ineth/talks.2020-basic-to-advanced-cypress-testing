@@ -2,7 +2,7 @@ describe('intro', () => {
   it('It should go through the intro flow', () => {
     cy.visit('nl/Opstart Eenmanszaak');
 
-    cy.get('#ccc-notify-accept').click();
+    cy.get('#CybotCookiebotDialogBodyLevelButtonAccept').click();
     cy.get('.xer-mb-3').click();
 
     cy.getBy('xer-sync-point');

@@ -13,13 +13,6 @@ export class Stap {
   public next() {
     return navigatie.verder();
   }
-
-  public skipSubflow() {
-    return cy
-      .getBy('navigatie-subflow-skip')
-      .click()
-      .syncPointShouldBe('Overzicht');
-  }
 }
 
 export default new Stap();

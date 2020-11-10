@@ -15,6 +15,19 @@ Note: [cypress.io](https://www.cypress.io/)
 
 <!--s-->
 
+![]()
+<img src="https://s.gravatar.com/avatar/618be685d9ae17dbf57f653bfbfa13f9?s=200" style="border-radius: 50%" alt="Avatar">
+
+## Thomas De Pauw
+
+<ul>
+  <li class="fragment">Front-end Developer <span class="bright">@Euricom</span></li>
+  <li class="fragment">VueJS = ❤️</li>
+  <li class="fragment"> Passion to automate and optimize my workflow</li>
+</ul>
+
+<!--s-->
+
 # Program
 
 - What is Cypress? <!-- .element class="fragment fade-in-then-semi-out" -->

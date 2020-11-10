@@ -5,7 +5,7 @@
   "main": "none",
   "scripts": {
     "open": "reveal-md slides.md -w",
-    "build": "reveal-md slides.md --static --static-dirs=dist"
+    "build": "reveal-md slides.md --static dist"
   },
   "repository": {
     "type": "git",

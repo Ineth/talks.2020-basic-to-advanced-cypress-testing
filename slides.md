@@ -50,7 +50,8 @@ Note: [cypress.io](https://www.cypress.io/)
   <li class="fragment fade-in-then-semi-out"><span class="bright">Javascript</span> E2E, Unit & Integratie Testing framework</li>
   <li class="fragment fade-in-then-semi-out">Made for everything in the <span class="bright"> browser </span></li>
   <li class="fragment fade-in-then-semi-out">For Developers & QA Engineers</li>
-  <li class="fragment fade-in-then-semi-out">Open source & Free</li>
+  <li class="fragment fade-in-then-semi-out">Open Source & Free</li>
+  <li class="fragment fade-in-then-semi-out">Great Documentation 🤩</li>
 </ul>
 
 <!--v-->

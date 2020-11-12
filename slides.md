@@ -188,11 +188,11 @@ Highlight
 Note:
 Test made using selector playground
 
-2: Start test by visiting page
-4-5: Accept cookies and start flow
-7: Wait for sync to be visible (SPA)
-8: Start aanbod
-10-14: Wait for voornaam input to be present and fill in field
+- 2: Start test by visiting page
+- 4-5: Accept cookies and start flow
+- 7: Wait for sync to be visible (SPA)
+- 8: Start aanbod
+- 10-14: Wait for voornaam input to be present and fill in field
 
 <!--v-->
 
@@ -281,9 +281,10 @@ it('It should go through the intro flow - Result', () => {
 ```
 
 Note:
-4: 3rd party dependency that doenst have automation ids in place
-8,8,12: Next navigation by automation id
-11: Input component automation id
+
+- 4: 3rd party dependency that doenst have automation ids in place
+- 8,8,12: Next navigation by automation id
+- 11: Input component automation id
 
 <!--v-->
 
@@ -363,10 +364,11 @@ export const componentSelectors = {
 ```
 
 Note:
-4-6: Cookie Control
-7-10: Input component
-11: generic next navigation button selector
-12: generic syncPoint
+
+- 4-6: Cookie Control
+- 7-10: Input component
+- 11: generic next navigation button selector
+- 12: generic syncPoint
 
 <!--v-->
 
@@ -437,9 +439,10 @@ Note:
 ![](img\test-strategies\stap-beharior-breakdown.png)
 
 Note:
-Generic Wizard
-Stap component shell
-build up by components with specific behavior
+
+- Generic Wizard
+- Stap component shell
+- build up by components with specific behavior
 
 <!--v-->
 

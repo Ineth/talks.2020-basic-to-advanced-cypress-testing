@@ -145,7 +145,7 @@ Note: [Cypress Browser Support](https://docs.cypress.io/guides/guides/launching-
 
 ## First things first
 
-- Language choise <!-- .element class="fragment fade-in-then-semi-out" -->
+- Language choice <!-- .element class="fragment fade-in-then-semi-out" -->
 - Stand alone or integrated <!-- .element class="fragment fade-in-then-semi-out" -->
 
 Note:
@@ -540,8 +540,8 @@ Note:
 
 ## Application Login
 
-- Mimic the login API flow
-- Preset cookies
+- Mimic the login API flow <!-- .element class="fragment fade-in-then-semi-out" -->
+- Preset cookies <!-- .element class="fragment fade-in-then-semi-out" -->
 
 <div class="bottom-note fragment">
   ✔️ Not every test should have to login through the UI
@@ -556,7 +556,7 @@ Note:
 ## Api Mocking
 
 - Test API Error Responses (4xx, 5xx, etc) <!-- .element class="fragment fade-in-then-semi-out" -->
-- Create fixtures to decouble the API <!-- .element class="fragment fade-in-then-semi-out" -->
+- Create fixtures to decouple the API <!-- .element class="fragment fade-in-then-semi-out" -->
 - Test Feature Toggles <!-- .element class="fragment fade-in-then-semi-out" -->
 - ... <!-- .element class="fragment fade-in-then-semi-out" -->
 

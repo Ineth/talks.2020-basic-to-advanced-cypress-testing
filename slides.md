@@ -72,7 +72,7 @@ TODO: Convert to logo's
 
 <!--v-->
 
-Default Utility libraries:
+Default Utility Libraries:
 
 - lodash
 - jQuery
@@ -115,7 +115,7 @@ Note: [Cypress architecture](https://docs.cypress.io/guides/overview/key-differe
 
 <!--v-->
 
-## Browser support
+## Browser Support
 
 <!--v-->
 
@@ -137,7 +137,7 @@ Note: [Cypress Browser Support](https://docs.cypress.io/guides/guides/launching-
 
 <!--s-->
 
-# Project Setup strategies
+# Project Setup Strategies
 
 ![](https://media.giphy.com/media/8wbpmeim0LmdW/giphy.gif) <!-- .element style="border: 0; background: None; box-shadow: None" width="100px" -->
 
@@ -308,7 +308,7 @@ Note:
 ## Centralize Selectors
 
 - Functional Readability <!-- .element class="fragment fade-in-then-semi-out" -->
-- Improve Maintenance <!-- .element class="fragment fade-in-then-semi-out" -->
+- Improve Maintainability <!-- .element class="fragment fade-in-then-semi-out" -->
 
 Note:
 
@@ -394,7 +394,7 @@ it('It should go through the intro flow - Result', () => {
 
 ### Recap
 
-- Automation ids grouped by components <!-- .element class="fragment" -->
+- Automation IDs grouped by components <!-- .element class="fragment" -->
 - Improved readability <!-- .element class="fragment" -->
 - Overview of all application selectors <!-- .element class="fragment" -->
 
@@ -483,15 +483,15 @@ Note:
 
 ### Recap
 
-- Abstracted behavior so it's centraly managed <!-- .element class="fragment" -->
+- Abstracted behavior so it's centrally managed <!-- .element class="fragment" -->
 - Allows for 1 time behavior updates <!-- .element class="fragment" -->
 - Insight on breaking behavior changes <!-- .element class="fragment" -->
 
 <!--v-->
 
 <div >
-  <p class="bright">Whats next? 🤔</p> 
-  <p class="fragment">🎉 Data driven E2E testing 🎉</p>
+  <p class="bright">What's next? 🤔</p> 
+  <p class="fragment">🎉 Data Driven E2E Testing 🎉</p>
 </div>
 
 <!--v-->
@@ -532,7 +532,7 @@ Note:
 ## Short what 😲
 
 - Helps reduce test run time <!-- .element class="fragment fade-in-then-semi-out" -->
-- Allow for easy testing of hard to reach places <!-- .element class="fragment fade-in-then-semi-out" -->
+- Allows for easy testing of hard to reach places <!-- .element class="fragment fade-in-then-semi-out" -->
 - Keeps tests focus <!-- .element class="fragment fade-in-then-semi-out" -->
 
 <div class="bottom-note fragment">
@@ -561,7 +561,6 @@ Note:
 - Test API Error Responses (4xx, 5xx, etc) <!-- .element class="fragment fade-in-then-semi-out" -->
 - Create fixtures to decouple the API <!-- .element class="fragment fade-in-then-semi-out" -->
 - Test Feature Toggles <!-- .element class="fragment fade-in-then-semi-out" -->
-- ... <!-- .element class="fragment fade-in-then-semi-out" -->
 
 <!--v-->
 
@@ -600,8 +599,8 @@ when using Redux, Veux, NGRX, ...
 
 ## Run options
 
-- Self Contained
-- Deployed environments
+- Self Contained <!-- .element class="fragment" -->
+- Deployed environments <!-- .element class="fragment" -->
 
 <!--v-->
 
@@ -620,69 +619,12 @@ when using Redux, Veux, NGRX, ...
 
 <!--v-->
 
-## 💡 Node Example
-
-```json [|3|8|9|10-13|11,4|12|13]
-{
-  "scripts": {
-    "test-ci": "npm run build && npm run pre-test-ci && run-p --race start-ci test",
-    "start-ci": "http-server ./dist -a localhost -p 4202 -c-1"
-  }
-}
-/*
-  1. npm run build        => create dist output
-  2. npm run pre-test-ci  => verify cypress installation & clean
-  3. run-p                => run the following commands in paralell
-    start-ci      => start application dist on local http-server
-    test          => run cypress tests
-    --race        => Terminate all tasks when one finishes
-*/
-```
-
-Note:
-
-- Also works on Devops hosted agents
-- [http-server](https://github.com/indexzero/http-server)
-- [npm-run-all](https://github.com/mysticatea/npm-run-all)
-
-<!--v-->
-
-## 💡 DotnetCore example
-
-```PS [|3-10|12-14|16|18-19]
-# run-tests-ci.ps1
-
-$ClientHost = Start-Job -Name ClientHost -ScriptBlock {
-  param([string] $hostExePath, [string] $port)
-  Write-Host "Starting dotnet core Job for project: $hostExePath" -ForegroundColor Gray
-  $Env:ASPNETCORE_URLS = "https://localhost:$port"
-  $hostExeItem = Get-ChildItem $hostExePath
-  cd $hostExeItem.DirectoryName
-  & $hostExePath
-} -ArgumentList $hostExePath, $port
-
-$Env:CYPRESS_BASE_URL="https://localhost:$port/"
-cd $testProjectPath
-& npm run $testCommand
-
-$ClientHost | Receive-Job
-
-Write-Host 'Stopping dotnet core job' -ForegroundColor Gray
-Remove-Job -Name ClientHost -Force
-```
-
-Note:
-3-10: Create Powershell job to run as a separate process. This will host the dotnet application
-12-14: Set Cypress config and run the provided test command
-16: Fetch console output of ran job, usefull for debug purposes
-18-19: Stop background job
-
-<!--v-->
-
 ## Parallelization
 
-- Use Cypress [Dashboard](https://www.cypress.io/dashboard)
-- Setup multi job pipelines
+TODO: to UL
+
+- Use Cypress [Dashboard](https://www.cypress.io/dashboard) <!-- .element class="fragment fade-in-then-semi-out" -->
+- Setup multi job pipelines <!-- .element class="fragment fade-in-then-semi-out" -->
 
 <!--v-->
 
@@ -707,14 +649,14 @@ Note:
 
 - Limit duration of one test suite <!-- .element class="fragment fade-in-then-semi-out" -->
 - Allow for partial runs <!-- .element class="fragment fade-in-then-semi-out" -->
-- Scope failure to more precies set <!-- .element class="fragment fade-in-then-semi-out" -->
+- Scope failures <!-- .element class="fragment fade-in-then-semi-out" -->
 - Preserve functional overview <!-- .element class="fragment fade-in-then-semi-out" -->
 
 <!--v-->
 
 ## Scale up in Devops
 
-![](img\ci-cd\regression-set-pipeline.png) <!-- .element style="border: 0; background: None; box-shadow: None" -->
+![](img\ci-cd\regression-set-pipeline.png) <!-- .element style="border: 0; background: None; box-shadow: None; height: 475px" -->
 
 <div class="fragment">
   ✔️ Runs 177 Tests in 28 min
@@ -732,7 +674,7 @@ Note:
 
 <!--v-->
 
-Alwasy ask yourself 🤔
+Always ask yourself 🤔
 
 <div class="fragment">
   <ul class="list-style-none ">

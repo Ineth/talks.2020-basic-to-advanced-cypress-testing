@@ -416,6 +416,21 @@ Note:
 
 <!--v-->
 
+### Example
+
+![](img\test-strategies\dropdown-list.png) <!-- .element style="height: 170px" -->
+
+<div class="fragment" style="font-size: 0.9em">
+  <p>Behavior</p>
+  <ul>
+    <li class="fragment">Typing text and wait for API response</li>
+    <li class="fragment">Selecting an item</li>
+    <li class="fragment">Clear input</li>
+  </ul>
+</div>
+
+<!--v-->
+
 ### Context
 
 ![](img\test-strategies\stap-beharior-breakdown.png)

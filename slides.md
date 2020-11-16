@@ -62,13 +62,30 @@ Note: [cypress.io](https://www.cypress.io/)
 
 Bundled Tools:
 
-- Mocha
-- Chai
-- Sinon
-- Sinon-Chai
+<div class="image-box">
+  <div class="image">
+    <img src="img\test-lib\mocha.png" alt="mocha">
+    <label for="">Mocha</label>
+  </div>
+  <div class="image">
+    <img src="img\test-lib\chai.png" alt="mocha">
+    <label for="">Chai</label>
+  </div>
+   <div class="image">
+    <img src="img\test-lib\sinon.png" alt="mocha">
+    <label for="">SinonJS</label>
+  </div>
+   <div class="image">
+    <img src="img\test-lib\jasmine.png" alt="mocha">
+    <label for="">Jasmine</label>
+  </div>
+</div>
 
-Note: [Bundled Tools](https://docs.cypress.io/guides/references/bundled-tools.html)
-TODO: Convert to logo's
+Note:
+
+- Stap voor JS Dev kleiner door gekende tooling
+
+[Bundled Tools](https://docs.cypress.io/guides/references/bundled-tools.html)
 
 <!--v-->
 
@@ -721,11 +738,18 @@ Test & Dev collaboration is key
   justify-content: center;
 }
 
-.image-box img {
+.image-box img, .image img {
   height: 250px;
   background: none !important;
   border: none !important;
   box-shadow: none !important;
+  align-self: center;
+  object-fit: contain;
+}
+
+.image-box .image {
+  display: flex;
+  flex-direction: column;
 }
 
 .image-box--center img {

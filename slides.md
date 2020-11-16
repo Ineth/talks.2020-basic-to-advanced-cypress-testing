@@ -166,6 +166,9 @@ Note: [Cypress Browser Support](https://docs.cypress.io/guides/guides/launching-
 - Stand alone or integrated <!-- .element class="fragment fade-in-then-semi-out" -->
 
 Note:
+
+- TS Better Discoveribility
+
 [TS support](https://docs.cypress.io/guides/tooling/typescript-support.html#Install-TypeScript)
 [Install Cypress](https://docs.cypress.io/guides/getting-started/installing-cypress.html)
 
@@ -207,7 +210,7 @@ Test made using selector playground
 
 - 2: Start test by visiting page
 - 4-5: Accept cookies and start flow
-- 7: Wait for sync to be visible (SPA)
+- 7: syncPoint: Loading indication for Cypress
 - 8: Start aanbod
 - 10-14: Wait for voornaam input to be present and fill in field
 
@@ -307,16 +310,18 @@ Note:
 
 ### Recap
 
-- Removed usages of IDs & CSS (Where possible) <!-- .element class="fragment" -->
-- Added functionally named selectors for better readability <!-- .element class="fragment" -->
+<ul class="list-style-none ">
+  <li class="fragment fade-in-then-semi-out">✔️ Removed usages of IDs & CSS (Where possible)</li>
+  <li class="fragment fade-in-then-semi-out">✔️ Added functionally named selectors for better readability</li>
+</ul>
 
 <!--v-->
 
 <div>
   <p>🤔 What if</p>
   <ul>
-    <li class="fragment">An automation ID needs to be updated?</li>
-    <li class="fragment">I want to know what selectors exist?</li>
+    <li class="fragment fade-in-then-semi-out">An automation ID needs to be updated?</li>
+    <li class="fragment fade-in-then-semi-out">I want to know what selectors exist?</li>
   </ul>
 </div>
 
@@ -391,7 +396,7 @@ Note:
 
 ### Updated test file
 
-```TS [|4|7,10|5,8,12|11]
+```TS [|4|5,8,12|7,10|11]
 it('It should go through the intro flow - Result', () => {
   cy.visit('nl/Opstart Eenmanszaak');
 
@@ -411,9 +416,11 @@ it('It should go through the intro flow - Result', () => {
 
 ### Recap
 
-- Automation IDs grouped by components <!-- .element class="fragment" -->
-- Improved readability <!-- .element class="fragment" -->
-- Overview of all application selectors <!-- .element class="fragment" -->
+<ul class="list-style-none ">
+  <li class="fragment fade-in-then-semi-out">✔️ Automation IDs grouped by components</li>
+  <li class="fragment fade-in-then-semi-out">✔️ Improved readability</li>
+  <li class="fragment fade-in-then-semi-out">✔️ Overview of all application selectors</li>
+</ul>
 
 <!--v-->
 
@@ -460,12 +467,35 @@ Note:
 - Generic Wizard
 - Stap component shell
 - build up by components with specific behavior
+- All demo steps are based on String-input
 
 <!--v-->
 
 ### Support components
 
 ![](img\test-strategies\support-behavior.png)
+
+<!--v-->
+
+### cookieControl
+
+```TS [|2,3|5,6]
+class CookieControl {
+  // selectors
+  public acceptButton = () => cy.get('#CybotCookiebotDialogBodyLevelButtonAccept', { timeout: 10000 });
+
+  // behavior
+  public accept = () => this.acceptButton().click();
+}
+
+export default new CookieControl();
+```
+
+Note:
+
+- List selectors & behavior
+- Commonly used Assertions, or assertion helpers
+- Composition
 
 <!--v-->
 
@@ -493,16 +523,19 @@ Note:
 
 Note:
 
-- Change in fill behavior can be handled in one place, keeping backward compatibility in mind
 - Navigation & Next logic is centralized
+- String input fill has extra option to fill checkbox
+- Fill behavior centralized, changes handled in one place
 
 <!--v-->
 
 ### Recap
 
-- Abstracted behavior so it's centrally managed <!-- .element class="fragment" -->
-- Allows for 1 time behavior updates <!-- .element class="fragment" -->
-- Insight on breaking behavior changes <!-- .element class="fragment" -->
+<ul class="list-style-none ">
+  <li class="fragment fade-in-then-semi-out">✔️ Abstracted behavior so it's centrally managed</li>
+  <li class="fragment fade-in-then-semi-out">✔️ Allows for 1 time behavior updates</li>
+  <li class="fragment fade-in-then-semi-out">✔️ Insight on breaking behavior changes</li>
+</ul>
 
 <!--v-->
 
@@ -510,6 +543,11 @@ Note:
   <p class="bright">What's next? 🤔</p> 
   <p class="fragment">🎉 Data Driven E2E Testing 🎉</p>
 </div>
+
+Note:
+
+- AanbodRunner
+- Auto-generating E2E tests
 
 <!--v-->
 
@@ -638,10 +676,10 @@ when using Redux, Veux, NGRX, ...
 
 ## Parallelization
 
-TODO: to UL
-
-- Use Cypress [Dashboard](https://www.cypress.io/dashboard) <!-- .element class="fragment fade-in-then-semi-out" -->
-- Setup multi job pipelines <!-- .element class="fragment fade-in-then-semi-out" -->
+<ul>
+  <li class="fragment fade-in-then-semi-out">Use Cypress <a href="https://www.cypress.io/dashboard" target="_blank">Dashboard</a></li>
+  <li class="fragment fade-in-then-semi-out">Setup multi job pipelines</li>
+</ul>
 
 <!--v-->
 

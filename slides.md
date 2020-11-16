@@ -60,24 +60,27 @@ Note: [cypress.io](https://www.cypress.io/)
 
 <!--v-->
 
-Bundled Tools:
+### Bundled Tools:
 
-<div class="image-box">
-  <div class="image">
-    <img src="img\test-lib\mocha.png" alt="mocha">
-    <label for="">Mocha</label>
+<div style="margin-bottom=20px;">
+  <div id="left" class="fragment">
+    <p class="bright">Bundled Tools</p>
+    <ul>
+      <li>Mocha</li>
+      <li>Chai</li>
+      <li>Sinon</li>
+      <li>Sinon-Chai</li>
+    </ul>
   </div>
-  <div class="image">
-    <img src="img\test-lib\chai.png" alt="mocha">
-    <label for="">Chai</label>
-  </div>
-   <div class="image">
-    <img src="img\test-lib\sinon.png" alt="mocha">
-    <label for="">SinonJS</label>
-  </div>
-   <div class="image">
-    <img src="img\test-lib\jasmine.png" alt="mocha">
-    <label for="">Jasmine</label>
+  <div id="right" class="fragment">
+    <p class="bright">Utility Libraries</p>
+    <ul>
+      <li>lodash</li>
+      <li>jQuery</li>
+      <li>minimatch.js</li>
+      <li>moment.js</li>
+      <li>...</li>
+    </ul>
   </div>
 </div>
 
@@ -86,20 +89,7 @@ Note:
 - Stap voor JS Dev kleiner door gekende tooling
 
 [Bundled Tools](https://docs.cypress.io/guides/references/bundled-tools.html)
-
-<!--v-->
-
-Default Utility Libraries:
-
-- lodash
-- jQuery
-- minimatch.js
-- moment.js
-- blob utils
-- Promise (Bluebird)
-
-Note: [Utilities](https://docs.cypress.io/guides/references/bundled-tools.html#Other-Library-Utilities)
-TODO: Convert to logo's
+[Utilities](https://docs.cypress.io/guides/references/bundled-tools.html#Other-Library-Utilities)
 
 <!--v-->
 
@@ -151,6 +141,16 @@ Custom browser can be added like e.g.
 </div>
 
 Note: [Cypress Browser Support](https://docs.cypress.io/guides/guides/launching-browsers.html#Browsers)
+
+<!--v-->
+
+## Why not Selenium?
+
+<ul class="fragment list-style-none ">
+    <li>❌ Slower Test Execution</li>
+    <li class="fragment">❌ Limited Control over the browser</li>
+    <li class="fragment">❌ Only suited for E2E testing</li>
+  </ul>
 
 <!--s-->
 

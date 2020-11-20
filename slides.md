@@ -35,6 +35,7 @@ Note: [cypress.io](https://www.cypress.io/)
 - Shortcuts <!-- .element class="fragment fade-in-then-semi-out" -->
 - CI/CD <!-- .element class="fragment fade-in-then-semi-out" -->
 - Developer Involvement <!-- .element class="fragment fade-in-then-semi-out" -->
+- Q&A <!-- .element class="fragment fade-in-then-semi-out" -->
 
 <!--s-->
 
@@ -57,10 +58,6 @@ Note: [cypress.io](https://www.cypress.io/)
 <!--v-->
 
 ## All-in-one Test Library
-
-<!--v-->
-
-### Bundled Tools:
 
 <div style="margin-bottom=20px;">
   <div id="left" class="fragment">
@@ -100,6 +97,8 @@ Note:
 ![cypress-architecture](img/cypress-architecture.png)
 
 <!--v-->
+
+## Advantages
 
 <ul>
   <li class="fragment fade-in-then-semi-out"><p>Runs fully in the browser</p></li>
@@ -745,6 +744,12 @@ Always ask yourself 🤔
 <!--v-->
 
 Test & Dev collaboration is key
+
+Note:
+
+- Harmonie
+- Dev onderhoudt support components & Technical tests
+- Tester plugt mee met Functional tests
 
 <!--s-->
 

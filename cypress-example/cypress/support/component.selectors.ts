@@ -1,6 +1,6 @@
 export const componentSelectors = {
   cookieControl: {
-    acceptButton: () => cy.get('#CybotCookiebotDialogBodyLevelButtonAccept')
+    acceptButton: () => cy.getBy('cookiebot-accept')
   },
   xerInput: {
     input: () => cy.getBy('textfield_input'),

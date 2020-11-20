@@ -1,6 +1,5 @@
 class CookieControl {
-  public acceptButton = () =>
-    cy.get('#CybotCookiebotDialogBodyLevelButtonAccept', { timeout: 10000 });
+  public acceptButton = () => cy.getBy('cookiebot-accept', { timeout: 10000 });
   public accept = () => this.acceptButton().click();
 }
 

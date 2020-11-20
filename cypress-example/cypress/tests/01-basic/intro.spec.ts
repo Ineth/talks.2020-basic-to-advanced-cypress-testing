@@ -2,7 +2,8 @@ describe('intro', () => {
   it('It should go through the intro flow', () => {
     cy.visit('nl/Opstart Eenmanszaak');
 
-    cy.get('#CybotCookiebotDialogBodyLevelButtonAccept').click();
+    // cy.get('#CybotCookiebotDialogBodyLevelButtonAccept').click();
+    cy.getBy('cookiebot-accept').click();
     cy.get('.xer-mb-3').click();
 
     cy.getBy('xer-sync-point');

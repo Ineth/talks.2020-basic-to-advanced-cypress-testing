@@ -83,7 +83,7 @@ Note: [cypress.io](https://www.cypress.io/)
 
 Note:
 
-- Stap voor JS Dev kleiner door gekende tooling
+- Going from Jest to Cypress is just a small step
 
 [Bundled Tools](https://docs.cypress.io/guides/references/bundled-tools.html)
 [Utilities](https://docs.cypress.io/guides/references/bundled-tools.html#Other-Library-Utilities)
@@ -180,7 +180,7 @@ Highlight
 
 - Selector playground
 - Step by Step inspection
-- Pauze feature
+- Pauze feature (cy.pause())
 
 <!--v-->
 
@@ -545,7 +545,7 @@ Note:
 
 Note:
 
-- AanbodRunner
+- AanbodRunner (Generic test generation)
 - Auto-generating E2E tests
 
 <!--v-->
@@ -747,9 +747,9 @@ Test & Dev collaboration is key
 
 Note:
 
-- Harmonie
-- Dev onderhoudt support components & Technical tests
-- Tester plugt mee met Functional tests
+- Harmony between Dev & Test profiles
+- Dev maintaince support components & Technical tests
+- Tester jumps in for functional tests
 
 <!--s-->
 

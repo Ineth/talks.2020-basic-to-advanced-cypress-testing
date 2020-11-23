@@ -1,13 +1,8 @@
-# Cypress Introductie
+# From Basic to Advanced Testing
 
-Install [reveal-md](https://github.com/webpro/reveal-md)
+What is Cypres?
+How do I setup a maintainable project, and what options are there?
+What are shortcuts?
+How do we handle CI/CD?
 
-```
-npm i -g reveal-md
-```
-
-Open presentation:
-
-```
-reveal-md slides.md
-```
+In this talk we will awnser all those questions!
